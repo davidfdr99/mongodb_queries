@@ -1,6 +1,5 @@
 from pymongo import MongoClient
 from datetime import datetime
-from pprint import pprint
 
 def get_database():
 
@@ -18,8 +17,8 @@ if __name__ == "__main__":
 
     #Gender Partition
     pipeline1 = [
-    { "$group": { "_id": "$Sex", "count": {"$sum": 1}}},
-    { "$out": "gender"}
+        { "$group": { "_id": "$Sex", "count": {"$sum": 1}}},
+        { "$out": "gender"}
     ]
 
     # Age Partition
@@ -30,16 +29,21 @@ if __name__ == "__main__":
 
     #Gender and Age Partition
     pipeline3 = [
-        {}
+        { "$group": { "_id": { "gender": "$Sex", "age": "$Age"}, "count": {"$sum": 1}}},
+        { "$out": "population"}
     ]
 
     # Race Partition
     pipeline4 = [
-    { "$group": { "_id": "$Race", "count": {"$sum": 1}}},
-    { "$out": "race"}
+        { "$group": { "_id": "$Race", "count": {"$sum": 1}}},
+        { "$out": "race"}
     ]
 
     # InjuryCity by county 
+    pipeline5 = [
+        { "$group": { "_id": "$InjuryCityGeo", "count": {"$sum": 1}}},
+        { "$out": "injurygeo"}
+    ]
 
     # ResidenceCity by county
 
@@ -49,11 +53,4 @@ if __name__ == "__main__":
 
     # More complicated query 2
 
-    # drugs.aggregate(pipeline2)
-
-    cursor = db.age.aggregate([
-        {"$sort": {"_id": 1}}
-    ])
-
-    for age in list(cursor):
-        pprint(age)
+    drugs.aggregate(pipeline5)
