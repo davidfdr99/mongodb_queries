@@ -17,6 +17,7 @@ if __name__ == "__main__":
 
     #Gender Partition
     pipeline1 = [
+        { "$match": {"Sex": {"$exists": True}}},
         { "$group": { "_id": "$Sex", "count": {"$sum": 1}}},
         { "$out": "gender"}
     ]
@@ -29,6 +30,7 @@ if __name__ == "__main__":
 
     #Gender and Age Partition
     pipeline3 = [
+        { "$match": {"Sex": {"$exists": True}}},
         { "$group": { "_id": { "gender": "$Sex", "age": "$Age"}, "count": {"$sum": 1}}},
         { "$out": "population"}
     ]
@@ -46,6 +48,10 @@ if __name__ == "__main__":
     ]
 
     # ResidenceCity by county
+    pipeline6 = [
+        { "$group": { "_id": "$ResidenceCityGeo", "count": {"$sum": 1}}},
+        { "$out": "residencegeo"}
+    ]
 
     # Which opioids
 
@@ -53,4 +59,4 @@ if __name__ == "__main__":
 
     # More complicated query 2
 
-    drugs.aggregate(pipeline5)
+    drugs.aggregate(pipeline1)
