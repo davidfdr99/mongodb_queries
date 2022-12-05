@@ -15,7 +15,6 @@ cursor1 = db.age.aggregate([
     ])
 for age in cursor1:
     ages.append([age['_id'], age['count']])
-print(ages)
 
 sns.set_style(style="darkgrid")
 
@@ -53,9 +52,18 @@ for rect in ax.patches:
 
 cursor3 = db.population.find()
 
-pop = []
+male = []
+female = []
 for doc in cursor3:
-    pop.append([doc['_id']['gender'], doc['_id']['age'], doc['count']])
+    if doc['_id']['gender'] == "Male":
+        male.append([doc['_id']['age'], doc['count']])
+    else:
+        female.append([doc['_id']['age'], doc['count']])
 
-df3 = pd.DataFrame(pop, columns=['Gender', 'Age', 'Count'])
-print(df3.head)
+col_names = ["Age", "Count"]
+df_male = pd.DataFrame(male, columns=col_names)
+df_female= pd.DataFrame(female, columns=col_names)
+
+
+l = list(range(0, 101, 5))
+for 
