@@ -1,0 +1,14 @@
+American Indian or Alaska Native	25
+Asian Indian	21
+Asian, Other	24
+Black	809
+Black or African American	284
+Chinese	2
+Hawaiian	1
+Korean	1
+Native American, Other	1
+Other	29
+Other Asian	6
+Race	1
+Unknown	48
+White 	7950

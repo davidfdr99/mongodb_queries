@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from pprint import pprint
+import time
 
 def get_database():
 
@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
     #Gender Partition
     pipeline1 = [
-        { "$match": {"Sex": {"$exists": True}}},
+        { "$match": {"Sex": {"$ne": "NA"}}},
         { "$group": { "_id": "$Sex", "count": {"$sum": 1}}},
         { "$out": "gender"}
     ]
@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     #Gender and Age Partition
     pipeline3 = [
-        { "$match": {"Sex": {"$exists": True}}},
+        { "$match": {"Sex": {"$ne": "NA"}}},
         { "$group": { "_id": { "gender": "$Sex", "age": "$Age"}, "count": {"$sum": 1}}},
         { "$out": "population"}
     ]
@@ -69,17 +69,8 @@ if __name__ == "__main__":
         {"$out": "types"}
     ]
 
-    pipeline9 = [ {"$project": {"drugs": {"$objectToArray": "$drugs"}, "Date": 1}},
-        {"$unwind": "$drugs"},
-        {"$match": {"drugs.v": 1}} 
-    ]
-
+    t1_start=time.perf_counter()
     drugs.aggregate(pipeline8)
-    #        {"$group": {"_id": "_id.years", "years_count": {"$sum": 1}}},
-    # {"years": {"$year": "$Date"}
-    c = drugs.find({"drugs.Tramad": 1})
-    print(len(list(c)))
-
-    # cursor = drugs.aggregate(pipeline9)
-    # for doc in cursor:
-    #     pprint.pprint(doc)
+    t1_stop = time.perf_counter()
+    print("Elapsed time during the whole program in seconds:",
+                                        t1_stop-t1_start)

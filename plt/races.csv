@@ -1,15 +1,15 @@
-,Race,Deaths
-0,na,24
-1,Other,29
-2,"Asian, Other",24
-3,Black or African American,284
-4,Hawaiian,1
-5,Black,809
-6,Other Asian,6
-7,"Native American, Other",1
-8,Chinese,2
-9,Korean,1
+,Race,Number of Deaths
+0,White,7951
+1,Black,809
+2,Black or African American,284
+3,Unknown,48
+4,Other,29
+5,NA,24
+6,"Asian, Other",24
+7,Asian Indian,21
+8,Other Asian,6
+9,Chinese,2
 10,American Indian or Alaska Native,1
-11,Unknown,48
-12,Asian Indian,21
-13,White,7951
+11,"Native American, Other",1
+12,Hawaiian,1
+13,Korean,1

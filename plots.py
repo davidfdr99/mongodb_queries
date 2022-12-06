@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import numpy as np
+from matplotlib import cm
+from color_palettes import tol_cmap
 
 from pipelines import get_database
 
@@ -47,6 +49,15 @@ def get_sex_dist():
         ax.text(rect.get_width(), rect.get_y() + rect.get_height() / 2,'{:.1f}%'.format(100 * rect.get_width()/total), weight='bold')
     # plt.savefig("./plt/01_gender_distribution.png")
 
+def get_race():
+    # Race distribution csv in "./plt"
+    cursor = db.race.aggregate([
+        {"$sort": {"count": -1}}
+    ])
+
+    data = [[doc['_id'], doc['count']] for doc in cursor]
+    df = pd.DataFrame(data, columns=['Race', 'Number of Deaths'])
+    df.to_csv('./plt/races.csv')
 
 def get_population():
     # Age and Gender 
@@ -58,19 +69,6 @@ def get_population():
 
     df_plt = pd.DataFrame(ll, columns=['Age', 'Gender', 'Count'])
     # df_plt.to_csv('./plt/population.csv')
-
-    #Race
-    data = []
-    cursor4 = db.race.find()
-    for doc in cursor4:
-        if doc['_id'] is not None:
-            data.append([doc['_id'], doc['count']])
-        else:
-            data.append(['na', doc['count']])
-    df_r = pd.DataFrame(data, columns=['Race', 'Deaths'])
-    # df_r.to_csv('./plt/races.csv')
-
-    return df_r
 
 def get_opioid_dev():
     #Opioid Development
@@ -86,6 +84,26 @@ def get_opioid_dev():
     plt.title("Development of deaths related to any opioid usage")
     # plt.savefig('./plt/07_opioid_dev.png')
 
-if __name__ =="__main__":
+def get_type_dev(pal):
+    # Draws a plot showing the development of drugs related to accidental deaths
 
+    cm.register_cmap('custom', cmap = pal)
+
+    types = [[doc['_id']['year'], doc['_id']['type'], doc['count']] for doc in db.types.find()]
+    df = pd.DataFrame(types, columns=['Year', 'Type', 'Count'])
+
+    sns.set(style="darkgrid")
+    sns.set_palette("deep")
+    sns.pointplot(x="Year", y="Count", hue="Type", data=df, palette='custom')
+    plt.xlabel("Years")
+    plt.ylabel("Number of Deaths")
+    plt.title("Development of different substances")
+    plt.show()
+
+
+if __name__ =="__main__":
+    
     db = get_database()
+
+    get_type_dev(tol_cmap('rainbow_WhBr'))
+    get_race()

@@ -18,5 +18,16 @@ df2 = read_csv('./plt/races.csv')
 df2[, 1] <- NULL
 
 df2 %>%
-  kbl() %>%
-  kable_styling(bootstrap_options = "striped", full_width = F, position = "center")
+  kbl(caption = "Race Distribution") %>%
+  kable_classic("striped", full_width=F, html_font = "Cambria")
+
+df3 <- data.frame("Task" = c("Pipeline 1", "Pipeline 2", "Pipeline 3", "Pipeline 4", "Pipeline 5","Pipeline 6", "Pipeline 7", "Pipeline 8"),
+        "Hadoop" = c("23s", "", "", "24s", "", "", "", ""),
+        "PyMongo Aggregate Pipeline" = c("0.084974s", "0.0708818s", "0.086834s", "0.072529s",
+          "0.069751s", "0.067856s", "0.086834s", "0.395058s")
+        )
+
+df3 %>%
+  kbl(caption = "Execution Time Comparison") %>%
+  kable_classic("striped", full_width=F, html_font = "Cambria") 
+
