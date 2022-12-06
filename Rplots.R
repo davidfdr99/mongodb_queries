@@ -18,7 +18,7 @@ df2 = read_csv('./plt/races.csv')
 df2[, 1] <- NULL
 
 df2 %>%
-  kbl(caption = "Race Distribution") %>%
+  kbl(caption = "Drug-related Deaths per Race in CT (2012-2021)") %>%
   kable_classic("striped", full_width=F, html_font = "Cambria")
 
 df3 <- data.frame("Task" = c("Pipeline 1", "Pipeline 2", "Pipeline 3", "Pipeline 4", "Pipeline 5","Pipeline 6", "Pipeline 7", "Pipeline 8"),
@@ -28,6 +28,8 @@ df3 <- data.frame("Task" = c("Pipeline 1", "Pipeline 2", "Pipeline 3", "Pipeline
         )
 
 df3 %>%
-  kbl(caption = "Execution Time Comparison") %>%
+  kbl(caption = "Execution Time Comparison", 
+      col.names = c("Task", "Hadoop", "PyMongo Aggregate Pipeline"),
+      align = c("lcc")) %>%
   kable_classic("striped", full_width=F, html_font = "Cambria") 
 

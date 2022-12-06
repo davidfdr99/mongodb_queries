@@ -1,0 +1,66 @@
+```bash
+- __project3__
+   - __HADOOP__
+     - [01gender.png](HADOOP/01gender.png)
+     - [04race.PNG](HADOOP/04race.PNG)
+     - __data__
+       - [Accidental\_Drug\_Related\_Deaths\_2012\-2021 \- Accidental\_Drug\_Related\_Deaths\_2012\-2021.tsv](HADOOP/data/Accidental_Drug_Related_Deaths_2012-2021%20-%20Accidental_Drug_Related_Deaths_2012-2021.tsv)
+       - [data2.csv](HADOOP/data/data2.csv)
+     - __functions__
+       - [mapper.py](HADOOP/functions/mapper.py)
+       - [mapper2.py](HADOOP/functions/mapper2.py)
+       - [reducer.py](HADOOP/functions/reducer.py)
+       - [reducer2.py](HADOOP/functions/reducer2.py)
+     - __res__
+       - [outputrace.txt](HADOOP/res/outputrace.txt)
+       - [outputsex.txt](HADOOP/res/outputsex.txt)
+   - [LICENSE](LICENSE)
+   - [README.md](README.md)
+   - [Rplots.R](Rplots.R)
+   - __\_\_pycache\_\___
+     - [color\_palettes.cpython\-39.pyc](__pycache__/color_palettes.cpython-39.pyc)
+     - [pipelines.cpython\-39.pyc](__pycache__/pipelines.cpython-39.pyc)
+   - [color\_palettes.py](color_palettes.py)
+   - __data__
+     - [Accidental\_Drug\_Related\_Deaths\_2012\-2021.csv](data/Accidental_Drug_Related_Deaths_2012-2021.csv)
+     - [data2.csv](data/data2.csv)
+     - [dataFinal.csv](data/dataFinal.csv)
+     - [drug\_abuse.json](data/drug_abuse.json)
+   - [geo.py](geo.py)
+   - [list.md](list.md)
+   - [pipelines.py](pipelines.py)
+   - [plots.py](plots.py)
+   - __plt__
+     - [00\_time\_comparison.html](plt/00_time_comparison.html)
+     - [01\_gender\_distribution.png](plt/01_gender_distribution.png)
+     - [02\_age\_distribution.png](plt/02_age_distribution.png)
+     - [03\_population\_pyramid.R.png](plt/03_population_pyramid.R.png)
+     - [04\_table\_races.html](plt/04_table_races.html)
+     - [05\_injurymap.png](plt/05_injurymap.png)
+     - [06\_residencemap.png](plt/06_residencemap.png)
+     - [07\_opioid\_dev.png](plt/07_opioid_dev.png)
+     - [08\_types\_dev.png](plt/08_types_dev.png)
+     - [population.csv](plt/population.csv)
+     - [races.csv](plt/races.csv)
+   - [preprocess.R](preprocess.R)
+   - __res__
+     - [age.json](res/age.json)
+     - [drugs.json](res/drugs.json)
+     - [gender.json](res/gender.json)
+     - [injurygeo.json](res/injurygeo.json)
+     - [opioid.json](res/opioid.json)
+     - [population.json](res/population.json)
+     - [race.json](res/race.json)
+     - [residencegeo.json](res/residencegeo.json)
+     - [types.json](res/types.json)
+   - __shapes__
+     - [tl\_2019\_09\_cousub.cpg](shapes/tl_2019_09_cousub.cpg)
+     - [tl\_2019\_09\_cousub.dbf](shapes/tl_2019_09_cousub.dbf)
+     - [tl\_2019\_09\_cousub.prj](shapes/tl_2019_09_cousub.prj)
+     - [tl\_2019\_09\_cousub.shp](shapes/tl_2019_09_cousub.shp)
+     - [tl\_2019\_09\_cousub.shp.ea.iso.xml](shapes/tl_2019_09_cousub.shp.ea.iso.xml)
+     - [tl\_2019\_09\_cousub.shp.iso.xml](shapes/tl_2019_09_cousub.shp.iso.xml)
+     - [tl\_2019\_09\_cousub.shx](shapes/tl_2019_09_cousub.shx)
+   - [tree.md](tree.md)
+```
+
